@@ -1,25 +1,40 @@
 import streamlit as st
 import pandas as pd
 from scipy.stats import wilcoxon
+from PIL import Image
 
+# ----------------------------
+# CONFIGURAZIONE PAGINA
+# ----------------------------
 st.set_page_config(page_title="Test di Wilcoxon", page_icon="📊")
 
-st.title("📊 Applicazione per Test di Wilcoxon – Parametri Personalizzabili")
+# ----------------------------
+# LOGO + TITOLO
+# ----------------------------
+col1, col2 = st.columns([1, 4])
 
+with col1:
+    logo = Image.open("Policlinico.jpg")  # Inserisci la tua immagine qui
+    st.image(logo, width=120)
+
+with col2:
+    st.write("# Test di Wilcoxon – Parametri Personalizzabili")
+    st.write("### Applicazione statistica Streamlit")
+
+st.write("---")
 st.write("""
 Questa applicazione permette di eseguire il **Test di Wilcoxon per dati appaiati**, 
 con la possibilità di **modificare manualmente i parametri del test**.
 """)
 
+# ----------------------------
+# PARAMETRI DEL TEST
+# ----------------------------
 st.write("## 🔧 Parametri del Test")
 st.write("""
-Qui puoi modificare i parametri del test di Wilcoxon.  
-Passa il mouse sopra ogni parametro per vedere la spiegazione.
+Puoi modificare i parametri del test. Passa il mouse sopra ogni parametro per leggere la spiegazione.
 """)
 
-# -------------------------------
-# PARAMETRI DEL TEST
-# -------------------------------
 colA, colB = st.columns(2)
 
 with colA:
@@ -39,8 +54,7 @@ Modificare questo parametro cambia il p-value.
         "correction (correzione di continuità)",
         value=False,
         help="""
-Applica la correzione di continuità per piccole dimensioni del campione.
-Rende il test più conservativo (p-value più alto).
+Applica la correzione di continuità per piccoli campioni. Rende il test più conservativo.
         """
     )
 
@@ -50,10 +64,9 @@ with colB:
         options=["wilcox", "pratt", "zsplit"],
         help="""
 Come trattare le differenze pari a 0 (x_i − y_i = 0):
-
-- **wilcox (default)**: scarta le differenze zero  
-- **pratt**: considera gli zero nella statistica → W e p possono cambiare  
-- **zsplit**: divide gli zero tra positivi e negativi  
+- **wilcox**: scarta gli zero
+- **pratt**: considera gli zero nella statistica
+- **zsplit**: divide gli zero tra positivi e negativi
         """
     )
 
@@ -62,19 +75,18 @@ Come trattare le differenze pari a 0 (x_i − y_i = 0):
         options=["auto", "exact", "approx"],
         help="""
 Metodo di calcolo del p-value:
-- **auto**: scelta automatica (default)
-- **exact**: calcolo esatto → più preciso per piccoli campioni
-- **approx**: usa approssimazione normale → utile per grandi campioni
+- **auto**: scelta automatica
+- **exact**: calcolo esatto (piccoli campioni)
+- **approx**: approssimazione normale (grandi campioni)
         """
     )
 
 st.write("---")
 
-# -------------------------------
-# SCELTA: DATI EXCEL
-# -------------------------------
+# ----------------------------
+# CARICAMENTO FILE EXCEL
+# ----------------------------
 st.write("## 📂 Caricamento dei dati")
-
 uploaded = st.file_uploader("Carica un file Excel (.xlsx)", type=["xlsx"])
 
 if uploaded:
