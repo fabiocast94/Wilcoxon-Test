@@ -13,10 +13,10 @@ st.set_page_config(page_title="Test di Wilcoxon", page_icon="📊")
 # ----------------------------
 logo = Image.open("Policlinico.jpg")
 
-# Centro l'immagine usando st.image dentro un container
-st.image(logo, width=250, caption=None, use_column_width=False)
+# Logo leggermente più piccolo (200 px) e centrato
+st.image(logo, width=200)
 
-# Titolo centrato usando markdown e HTML
+# Titolo centrato
 st.markdown(
     "<h1 style='text-align: center;'>Test di Wilcoxon</h1>",
     unsafe_allow_html=True
