@@ -9,12 +9,20 @@ from PIL import Image
 st.set_page_config(page_title="Test di Wilcoxon", page_icon="📊")
 
 # ----------------------------
-# LOGO SOPRA IL TITOLO
+# LOGO E TITOLO CENTRATI
 # ----------------------------
 logo = Image.open("Policlinico.jpg")
-st.image(logo, width=250)  # logo più grande
 
-st.title("Test di Wilcoxon")
+st.markdown(
+    f"""
+    <div style="text-align: center;">
+        <img src="Policlinico.jpg" width="250">
+        <h1>Test di Wilcoxon</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.write("---")
 st.write("""
 Questa applicazione permette di eseguire il **Test di Wilcoxon per dati appaiati**, 
