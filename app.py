@@ -12,10 +12,9 @@ st.set_page_config(page_title="Test di Wilcoxon", page_icon="📊")
 # LOGO SOPRA IL TITOLO
 # ----------------------------
 logo = Image.open("Policlinico.jpg")
-st.image(logo, width=150)  # puoi regolare la dimensione
+st.image(logo, width=250)  # logo più grande
 
-st.title("Test di Wilcoxon – Parametri Personalizzabili")
-st.subheader("Applicazione statistica Streamlit")
+st.title("Test di Wilcoxon")
 st.write("---")
 st.write("""
 Questa applicazione permette di eseguire il **Test di Wilcoxon per dati appaiati**, 
