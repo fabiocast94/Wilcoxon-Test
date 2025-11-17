@@ -1,29 +1,19 @@
 import streamlit as st
-import pandas as pd
-from scipy.stats import wilcoxon
 from PIL import Image
 import base64
 
-# ----------------------------
-# CONFIGURAZIONE PAGINA
-# ----------------------------
-st.set_page_config(page_title="Test di Wilcoxon", page_icon="📊")
-
-# ----------------------------
-# LOGO E TITOLO CENTRATI
-# ----------------------------
-
-# Carichiamo l'immagine e la codifichiamo in base64
+# Caricamento immagine e conversione in base64
 logo_path = "Policlinico.jpg"
 with open(logo_path, "rb") as f:
     logo_bytes = f.read()
 logo_base64 = base64.b64encode(logo_bytes).decode()
 
-# HTML per centrare logo e titolo
+# Header con logo leggermente a sinistra e titolo centrato
 st.markdown(
     f"""
     <div style="text-align: center;">
-        <img src="data:image/jpg;base64,{logo_base64}" width="200">
+        <!-- Logo spostato leggermente a sinistra con margin-right -->
+        <img src="data:image/jpg;base64,{logo_base64}" width="200" style="margin-right: 30px;">
         <h1>Test di Wilcoxon</h1>
     </div>
     """,
