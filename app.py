@@ -9,18 +9,13 @@ from PIL import Image
 st.set_page_config(page_title="Test di Wilcoxon", page_icon="📊")
 
 # ----------------------------
-# LOGO + TITOLO
+# LOGO SOPRA IL TITOLO
 # ----------------------------
-col1, col2 = st.columns([1, 4])
+logo = Image.open("Policlinico.jpg")
+st.image(logo, width=150)  # puoi regolare la dimensione
 
-with col1:
-    logo = Image.open("Policlinico.jpg")  # Inserisci la tua immagine qui
-    st.image(logo, width=120)
-
-with col2:
-    st.write("# Test di Wilcoxon – Parametri Personalizzabili")
-    st.write("### Applicazione statistica Streamlit")
-
+st.title("Test di Wilcoxon – Parametri Personalizzabili")
+st.subheader("Applicazione statistica Streamlit")
 st.write("---")
 st.write("""
 Questa applicazione permette di eseguire il **Test di Wilcoxon per dati appaiati**, 
